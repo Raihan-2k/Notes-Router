@@ -1,21 +1,19 @@
 import React from 'react';
-import { addNote } from '../utils/local-data';
+import { addNote } from '../utils/network-data';
 import { useNavigate } from 'react-router-dom';
 import AddPageDetail from '../components/AddPageDetail';
  
-function AddPage() {
+const AddPage = () => {
   const navigate = useNavigate();
   
-  function onAddNoteHandler(note) {
+  const onAddNoteHandler = async (note) => {
     addNote(note);
     navigate('/');
   }
  
   return (
     <section>
-      <h2>Tambah kontak</h2>
       <AddPageDetail addNote={onAddNoteHandler} />
-      
     </section>
   )
 }

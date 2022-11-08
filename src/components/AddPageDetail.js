@@ -1,71 +1,91 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import {BsClipboardPlus} from 'react-icons/bs'
+import LocaleContext from '../contexts/LocaleContext';
 
-export class AddNewPageInput extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      title: '',
-      body: '',
-    };
-  }
+const AddPageDetail = ({ addNote }) => {
+  const { locale } = useContext(LocaleContext);
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
-  onChangeHandler = (r) => {
-    this.setState(() => {
-      return {
-        title: r.target.value,
-      };
-    });
+  const onChangeHandler = (r) => {
+    setTitle(r.target.value);
   };
 
-  onInputHandler = (r) => {
-    this.setState(() => {
-      return {
-        body: r.target.innerHTML,
-      };
-    });
+  const onInputHandler = (r) => {
+    setBody(r.target.innerHTML);
   };
 
-  onClickHandler = () => {
-    this.props.addNote(this.state);
+  const onClickHandler = () => {
+    addNote({ title, body });
   };
 
-  render() {
+// export class AddPageDetail extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       title: '',
+//       body: '',
+//     };
+//   }
+
+//   onChangeHandler = (r) => {
+//     this.setState(() => {
+//       return {
+//         title: r.target.value,
+//       };
+//     });
+//   };
+
+//   onInputHandler = (r) => {
+//     this.setState(() => {
+//       return {
+//         body: r.target.innerHTML,
+//       };
+//     });
+//   };
+
+//   onClickHandler = (r) => {
+//     this.props.addNote(this.state);
+//   };
+
+//   render() {
     return (
       <>
         <div className="add-new-page__input">
           <input
             className="add-new-page__input__title"
-            placeholder="Catatan rahasia"
-            value={this.state.title}
-            onChange={this.onChangeHandler}
+            placeholder={locale === 'id' ? 'Catatan': 'Notes'}
+            required
+            value={title}
+            onChange={onChangeHandler}
           />
           <div
             className="add-new-page__input__body"
-            data-placeholder="Sebenarnya saya adalah ...."
+            data-placeholder={locale === 'id' ? 'Tambahkan Catatan Anda': 'Add Your Note'}
             contentEditable="true"
-            onInput={this.onInputHandler}
+            onInput={onInputHandler}
           ></div>
         </div>
         <div className="add-new-page__action">
           <button
             className="action"
             type="button"
-            title="Simpan"
-            onClick={this.onClickHandler}
-          >
+            title="Add Note"
+            onClick={onClickHandler}
+          > 
             <BsClipboardPlus/>
           </button>
         </div>
       </>
     );
   }
-}
 
-AddNewPageInput.propTypes = {
+
+AddPageDetail.propTypes = {
   addNote: PropTypes.func.isRequired,
 };
 
-export default AddNewPageInput;
+export default AddPageDetail;

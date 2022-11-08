@@ -4,13 +4,13 @@ import {RiDeleteBin6Line} from 'react-icons/ri';
 import {FaFileArchive} from 'react-icons/fa'
 import {FaRegFileArchive} from 'react-icons/fa'
 
-function NoteDetail({
+const NoteDetail = ({
   id,
   archived,
   archiveNote,
   deleteNote,
   unArchiveNote,
-}) {
+}) => {
   const onArchiveHandler = () => {
     archiveNote(id);
   };
@@ -59,11 +59,11 @@ function NoteDetail({
 };
 
 NoteDetail.propTypes = {
-  id: PropTypes.string.isRequired,
-  archived: PropTypes.bool.isRequired,
-  archiveNote: PropTypes.func.isRequired,
-  unArchiveNote: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
+  id: PropTypes.string,
+  archived: PropTypes.bool,
+  archiveNote: PropTypes.func,
+  unArchiveNote: PropTypes.func,
+  deleteNote: PropTypes.func,
 };
 
 export default NoteDetail;

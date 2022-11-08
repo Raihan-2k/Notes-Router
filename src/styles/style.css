@@ -2,21 +2,21 @@
   --primary: #BB86FC;
   --primary-variant: #3700B3;
   --secondary: #03DAC6;
-  --background: #121212;
-  --surface: #121212;
+  --background: #15133C;
+  --surface: #3FA796;
   --error: #CF6679;
   --warning: #F39C12;
   --on-background: #FFFFFF;
-  --on-background-grey: #c7c7c7;
+  --on-background-grey: #FC5185;
   --on-surface: #FFFFFF;
 }
 
 [data-theme="light"] {
-  --background: #DDDDDD;
-  --suface: #FFFFFF;
-  --on-background: #333333;
-  --on-background-grey: #6d6d6d;
-  --on-surface: #333333;
+  --background: #F2D7D9;
+  --surface: #3FA796; 
+  --on-background: #748DA6;
+  --on-background-grey: #7D6E83;
+  --on-surface: white;
 }
 
 * {
@@ -27,6 +27,7 @@
 
 a {
   color: var(--on-background);
+  text-decoration: none;
 }
 
 
@@ -58,7 +59,10 @@ header .navigation ul li {
   font-size: 24px;
   margin: 0 8px;
 }
-
+.navigation ul li{
+  margin-right: 100px;
+  margin-left: 100px;
+}
 main {
   margin: 0 auto;
   padding: 32px 0;
@@ -79,8 +83,15 @@ main {
   padding: 16px 8px;
 }
 
+.notes-list-empty h1 {
+  text-align: center;
+  font-size: xx-large;
+  color: var(--on-background-grey);
+}
+
 .notes-list-empty p {
   text-align: center;
+  font-size: xx-large;
   color: var(--on-background-grey);
 }
 .note-item {
@@ -137,6 +148,15 @@ main {
   gap: 16px;
   bottom: 32px;
   right: 32px;
+  flex-direction: column;
+}
+
+.home-page{
+  font-size: xx-large;
+}
+
+.homepage h1{
+  font-size: xx-large;
 }
 
 .action {
@@ -152,6 +172,10 @@ main {
   color: var(--background);
   padding: 8px;
   cursor: pointer;
+}
+
+section h2{
+  font-size: xx-large;
 }
 
 .add-new-page__input {
@@ -186,7 +210,7 @@ main {
 
 [data-placeholder]:empty::before {
   content: attr(data-placeholder);
-  color: var(--on-background-grey)
+  color: var(--on-background-grey);
 }
 
 .search-bar input {
@@ -201,7 +225,7 @@ main {
 }
 
 .search-bar input::placeholder {
-  color: var(--on-background-grey);
+  color: var( --on-background-grey);
 }
 
 .toggle-theme, .toggle-locale {

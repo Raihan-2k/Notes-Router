@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NoteItem from './NoteItem';
 
-function NoteList({ notes,}) {
+function NoteList({ notes}) {
   return (
     <div className="notes-list">
       {
